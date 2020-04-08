@@ -1,5 +1,5 @@
 import { isNumber } from "./helpers";
-import { mathOperators } from "./mathOperators";
+import { mathOperators, monoMathOperators } from "./mathOperators";
 
 export type ParsedLineType = (number | string)[];
 
@@ -9,11 +9,11 @@ export const parser = (line: string): ParsedLineType | null => {
   return stack.reduce<ParsedLineType>((result, item, key) => {
     const prevItem = stack[key - 1];
 
-    const isValidNumberPush = !isNumber(prevItem) && isNumber(item);
+    const isValidNumberPush = isNumber(item) && !isNumber(prevItem) && !monoMathOperators.hasOwnProperty(prevItem);
     const isValidOperatorPush =
-      isNumber(prevItem) &&
       !isNumber(item) &&
-      mathOperators.hasOwnProperty(item);
+      (mathOperators.hasOwnProperty(item) || monoMathOperators.hasOwnProperty(item)) &&
+      (isNumber(prevItem) || (mathOperators.hasOwnProperty(item) && monoMathOperators.hasOwnProperty(prevItem)));
 
     if (isValidNumberPush) {
       result.push(Number(item));
