@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "npx webpack --mode production",
+    "calc": "npx ts-node src/lesson2",
     "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix src/",
-    "test": "npx jest"
+    "test": "npx jest",
+    "check": "npm test && npm run lint"
   },
   "repository": {
     "type": "git",
