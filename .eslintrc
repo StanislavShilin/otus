@@ -5,11 +5,24 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "parserOptions": {
     "sourceType": "module",
     "parser": "babel-eslint",
     "ecmaVersion": 2018
-  }
+  },
+  "overrides": [
+    {
+      "files": ["webpack.config.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": ["off"]
+      }
+    }
+  ]
 }
