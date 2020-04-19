@@ -1,4 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
+import { Hello } from "./lesson 3/Hello"
 
-render(<h1>React here!</h1>, document.getElementById("root"));
+render(  <Hello name={'Сауль'} />, document.getElementById("root"));

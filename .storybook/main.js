@@ -7,6 +7,7 @@ module.exports = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
+    '@storybook/addon-storysource',
   ],
   webpackFinal: (config) => {
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
