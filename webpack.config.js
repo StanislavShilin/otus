@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: '[name].[contenthash].js'
+    filename: '[name].[hash].js'
   },
   module: {
     rules: [
@@ -27,7 +27,7 @@ module.exports = {
   },
   plugins: [
       new HtmlWebpackPlugin({
-      template: "./src/index.html"
+      template: "./src/public/index.html"
       }),
       new CleanWebpackPlugin()
   ]
