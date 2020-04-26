@@ -20,6 +20,12 @@
     "type": "git",
     "url": "git+https://github.com/StanislavShilin/otus.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run check",
+      "pre-push": "npm run check"
+    }
+  },
   "keywords": [
     "otus",
     "react",
