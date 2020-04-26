@@ -17,7 +17,11 @@ export const zeroPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     const mathOperator = mathOperators[item];
     const monoMathOperator = monoMathOperators[nextItem];
 
-    if (!isNumber(String(item)) && mathOperator && mathOperatorsPriorities[item] === ZERO) {
+    if (
+      !isNumber(String(item)) &&
+      mathOperator &&
+      mathOperatorsPriorities[item] === ZERO
+    ) {
       if (!mathOperator) {
         throw new TypeError("Unexpected stack!");
       }
@@ -25,21 +29,20 @@ export const zeroPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
         ...result.slice(0, -2),
         mathOperator(Number(prevItem), Number(nextItem)),
       ];
-    } else if (!isNumber(String(nextItem)) && monoMathOperator && mathOperatorsPriorities[nextItem] === ZERO) {
+    } else if (
+      !isNumber(String(nextItem)) &&
+      monoMathOperator &&
+      mathOperatorsPriorities[nextItem] === ZERO
+    ) {
       if (!monoMathOperator) {
         throw new TypeError("Unexpected stack!");
       }
-      result = [
-        ...result.slice(0, -1),
-        monoMathOperator(Number(item)),
-      ];
-    }
-    else {
+      result = [...result.slice(0, -1), monoMathOperator(Number(item))];
+    } else {
       result.push(nextItem);
     }
     return result;
   }, []);
-
 
 export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
   stack.reduce<ParsedLineType>((result, nextItem) => {

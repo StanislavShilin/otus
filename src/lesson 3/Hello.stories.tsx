@@ -5,8 +5,4 @@ export default {
   title: "Hello",
 };
 
-export const withRealField: React.FC<{}> = () => (
-  <Hello
-    name={'Сауль'}
-  />
-);
+export const withRealField: React.FC<{}> = () => <Hello name={"Сауль"} />;

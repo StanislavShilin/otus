@@ -9,11 +9,17 @@ export const parser = (line: string): ParsedLineType | null => {
   return stack.reduce<ParsedLineType>((result, item, key) => {
     const prevItem = stack[key - 1];
 
-    const isValidNumberPush = isNumber(item) && !isNumber(prevItem) && !monoMathOperators.hasOwnProperty(prevItem);
+    const isValidNumberPush =
+      isNumber(item) &&
+      !isNumber(prevItem) &&
+      !monoMathOperators.hasOwnProperty(prevItem);
     const isValidOperatorPush =
       !isNumber(item) &&
-      (mathOperators.hasOwnProperty(item) || monoMathOperators.hasOwnProperty(item)) &&
-      (isNumber(prevItem) || (mathOperators.hasOwnProperty(item) && monoMathOperators.hasOwnProperty(prevItem)));
+      (mathOperators.hasOwnProperty(item) ||
+        monoMathOperators.hasOwnProperty(item)) &&
+      (isNumber(prevItem) ||
+        (mathOperators.hasOwnProperty(item) &&
+          monoMathOperators.hasOwnProperty(prevItem)));
 
     if (isValidNumberPush) {
       result.push(Number(item));
