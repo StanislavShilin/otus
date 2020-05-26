@@ -1,5 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import { Hello } from "./lesson 3/Hello";
+import { InteractiveField } from "./components";
 
-render(<Hello name={"Сауль"} />, document.getElementById("root"));
+render(
+  <InteractiveField xSize={3} ySize={3} />,
+  document.getElementById("root")
+);
